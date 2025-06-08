@@ -24,12 +24,5 @@
 
 
 <!-- Note: Ensure that the 'base.html' template exists and contains the necessary HTML structure. -->
-
-<!-- OLD: 
- This template allows the user to add a new student to the system. -->
-<!-- It includes fields for the student's name, phone number, membership number, and classes bought. -->
-<!-- The form submits the data to the server, and a CSRF token is included for security. -->
-<!-- The user can also navigate back to the home page using the provided link. -->
-<!-- Note: Ensure that the URL for 'index' (to display the main page of the app) is defined in your Django project's URL configuration. -->
-<!-- The form uses the POST method to submit data to the server, and the CSRF token is included for security. -->
-<!-- The 'classes_left' field allows the user to select how many classes the student has bought. -->
+<!-- This template extends the base template and provides a form for adding a new student -->
+<!-- The form includes CSRF protection and displays validation errors if any -->

@@ -14,17 +14,4 @@
 {% endif %}
 {% endblock %}
 
-<!-- Note: Ensure that the 'base.html' template exists and contains the necessary HTML structure. 
- The form object in login.html is an instance of Django's AuthenticationForm.
-
- login.html depends on a form object, but this form is typically provided by Django's built-in authentication system (AuthenticationForm).
-It does not directly depend on your forms.py file unless you define a custom login form there and use it in your login view
--->
-<!-- This template allows the user to log in to the system. -->
-<!-- It includes fields for the username and password. -->
-<!-- The form submits the data to the server, and a CSRF token is included for security. -->
-<!-- The user can also see any errors related to the login attempt, such as incorrect credentials. -->
-<!-- The form uses the POST method to submit data to the server, and the CSRF token is included for security. -->
-<!-- The 'form.as_p' renders the form fields as paragraphs, making it easy to read and fill out. -->
-<!-- The 'form.errors' block displays any validation errors that occur during the login attempt. -->
-<!-- The 'button' element submits the form when clicked, allowing the user to log in. -->
+<!-- Note: Ensure that the 'base.html' template exists and contains the necessary HTML structure. -->
