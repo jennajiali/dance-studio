@@ -10,9 +10,9 @@ A Django-based web application for managing a dance studio, including student re
 - **Authentication**: Secure login/logout for staff members.
 
 ## Requirements
-Python 3.11+
-Django 5.0+
-SQLite (default database)
+- Python 3.11+
+- Django 5.0+
+- SQLite (default database)
 
 ## Installation
 
