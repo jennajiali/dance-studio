@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Add a New Dance Class</h1>
+    <form method="post">{% csrf_token %}
+        {{ form.as_p }}
+        {% if form.errors %}
+            <ul style="color: red;">
+                {% for field in form %}
+                  {% for error in field.errors %}
+                    <li>{{ field.label }}: {{ error }}</li>
+                  {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                  <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <button type="submit">Add Dance Class</button>
+    </form>
+    <a href="{% url 'index' %}">Back to Home</a>
+{% endblock %}
+
+
+<!-- Note: Ensure that the 'base.html' template exists and contains the necessary HTML structure. -->

@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form method="get" class="d-flex mb-3">
+        <input type="text" name="query" class="form-control me-2" placeholder="Search by name, phone, or ID" value="{{ query }}">
+        <button type="submit" class="btn btn-primary">Search</button>
+        {% if user.is_authenticated %}
+          <a href="{% url 'add_student' %}" class="btn btn-success ms-2">Add Student</a>
+          <a href="{% url 'add_dance_class' %}" class="btn btn-info ms-2">Add Dance Class</a>
+          <a href="{% url 'export_attendance_csv' %}" class="btn btn-warning ms-2">Export Attendance</a>
+        {% endif %}
+    </form>
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>ID</th>
+                <th>Classes Left</th>
+                <th>Action</th>
+                <th>Attendance</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+            <tr>
+                <td>{{ student.name }}</td>
+                <td>{{ student.phone }}</td>
+                <td>{{ student.membership_number }}</td>
+                <td>{{ student.classes_left }}</td>
+                <td>
+                    {% if user.is_authenticated and student.classes_left > 0 %}
+                    <a href="{% url 'check_in' student.id %}" class="btn btn-primary btn-sm">Check In</a>
+                    {% elif student.classes_left == 0 %}
+                    <span class="text-danger">No classes left</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{% url 'student_attendance_history' student.id %}" class="btn btn-secondary btn-sm">View Attendance</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+<!-- This is the Check-In System template for the dance studio check-in system. 
+    It includes a search form, a link to add students, 
+    and a link to export attendance data. 
+    The student list is displayed in a table with options to check in students who have classes left. -->
+
+<!-- Note: Ensure that the URLs for 'add_student' and 'export_attendance_csv' ???
+    are defined in your Django project's URL configuration. 
+    The 'check_in' URL should also be set up to handle the student ID passed in the link. -->

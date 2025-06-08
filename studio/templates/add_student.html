@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1 class="mb-4">Add a New Student</h1>
+    <form method="post" class="needs-validation" novalidate>{% csrf_token %}
+        {{ form.as_p }}
+        {% if form.errors %}
+            <div class="alert alert-danger">
+                <ul>
+                    {% for field in form %}
+                      {% for error in field.errors %}
+                        <li>{{ field.label }}: {{ error }}</li>
+                      {% endfor %}
+                    {% endfor %}
+                    {% for error in form.non_field_errors %}
+                      <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        <button type="submit" class="btn btn-success">Add Student</button>
+    </form>
+    <a href="{% url 'index' %}" class="btn btn-secondary mt-3">Back to Home</a>
+{% endblock %}
+
+
+<!-- Note: Ensure that the 'base.html' template exists and contains the necessary HTML structure. -->
+
+<!-- OLD: 
+ This template allows the user to add a new student to the system. -->
+<!-- It includes fields for the student's name, phone number, membership number, and classes bought. -->
+<!-- The form submits the data to the server, and a CSRF token is included for security. -->
+<!-- The user can also navigate back to the home page using the provided link. -->
+<!-- Note: Ensure that the URL for 'index' (to display the main page of the app) is defined in your Django project's URL configuration. -->
+<!-- The form uses the POST method to submit data to the server, and the CSRF token is included for security. -->
+<!-- The 'classes_left' field allows the user to select how many classes the student has bought. -->

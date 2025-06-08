@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Attendance History for {{ student.name }} ({{ student.membership_number }})</h2>
+    {% if attendance_records %}
+    <table border="1">
+        <tr>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Dance Class</th>
+        </tr>
+        {% for record in attendance_records %}
+        <tr>
+            <td>{{ record.date }}</td>
+            <td>{{ record.time }}</td>
+            <td>{{ record.dance_class.name }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p>No attendance records found for this student.</p>
+    {% endif %}
+    <a href="{% url 'index' %}">Back to Home</a>
+{% endblock %}
+
+
+<!-- This template displays the attendance history for a specific student. -->
+<!-- It shows the student's name and membership number, and lists their attendance records in a table. -->
+<!-- If there are no records, it informs the user that no attendance records were found. -->
+<!-- The template also includes a link to return to the home page. -->
+<!-- Note: Ensure that the 'base.html' template exists and contains the necessary HTML structure. -->
+<!-- The 'attendance_records' variable should be passed from the view, containing the attendance data for the student. -->
+<!-- The 'student' variable should also be passed from the view, containing the student's details. -->
+<!-- The 'url' tag is used to generate the URL for the 'index' view, allowing easy navigation back to the home page. -->
+
+<!-- Ensure that the 'attendance_records' variable is a list of attendance records for the student, -->
+<!-- and that each record has 'date', 'time', and 'dance_class' attributes. -->
+<!-- The 'dance_class' attribute should have a 'name' attribute to display the class name in the table. -->

@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dance Studio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body class="bg-light">
+  <header class="bg-dark text-white p-3">
+    <div class="container">
+      <h1>Dance Studio System</h1>
+      {% if user.is_authenticated %}
+        <p>Logged in as {{ user.username }} | <a href="{% url 'logout' %}" class="text-white">Logout</a></p>
+      {% else %}
+        <a href="{% url 'login' %}" class="text-white">Login</a>
+      {% endif %}
+    </div>
+  </header>
+  <main class="container mt-4">
+    {% block content %}{% endblock %}
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+<!--this is the base template for the dance studio system -->
+<!-- It includes a header with the title and user authentication links -->
+<!-- The main content will be defined in child templates using the 'content' block -->
+<!-- The 'user' context variable is used to check if a user is authenticated -->
+<!-- The 'url' template tag is used to generate URLs for login and logout actions -->
+<!-- The 'if' statement checks if the user is authenticated and displays appropriate links -->
+<!-- The 'h1' tag displays the title of the dance studio system -->
+<!-- The 'hr' tag creates a horizontal rule for visual separation -->
+<!-- The 'main' tag contains the main content area where child templates will insert their content -->
+<!-- The 'block content' tag defines a block that can be overridden in child templates -->
+<!-- The 'endblock' tag marks the end of the content block -->
+
+<!-- This template serves as the base layout for all pages in the dance studio application -->
+<!-- The base template is designed to be extended by other templates in the dance studio application -->
+<!-- The 'title' tag sets the title of the HTML document -->
+<!-- The 'header' section contains the main navigation and user information -->
+<!-- The 'body' section contains the main content of the page -->
