@@ -9,6 +9,11 @@ A Django-based web application for managing a dance studio, including student re
 - **Export Attendance**: Download attendance records as a CSV file.
 - **Authentication**: Secure login/logout for staff members.
 
+## Requirements
+Python 3.11+
+Django 5.0+
+SQLite (default database)
+
 ## Installation
 
 1. Clone the repository:
